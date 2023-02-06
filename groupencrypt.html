@@ -1,0 +1,82 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>GroupEncrypt</title>
+<meta charset="UTF-8" appcache="groupencrypt.appcache">
+<meta name="author" content="F. Ruiz">
+<meta name="robots" content="index">
+<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="apple-touch-icon" href="images/icon24.png">
+<link rel="shortcut icon" type="image/x-icon" href="images/icon24.png">
+<link href="style.css" rel="stylesheet">
+
+
+<!--License notice and SSL force-->
+<script src="lib/license.js"></script>
+    
+<!--this only loads two regular expressions: blackListExp and wordListExp, plus their lengths-->
+<script src="lib/dictionary_en.js"></script>
+
+<!--Tweet NaCl crypto library by Dmitry Chestnykh, v1.0.3. https://github.com/dchest/tweetnacl-js-->
+<script src="lib-opensrc/nacl-fast.js"></script>
+
+<!--scrypt-async-js KDF by Dmitry Chestnykh, v2.0.1. https://github.com/dchest/scrypt-async-js-->
+<script src="lib-opensrc/scrypt-async.js"></script>
+
+<!--this used to be in TweetNaCl, but they dropped it-->
+<script src="lib-opensrc/nacl-util.js"></script>
+</head>
+
+<body>
+<h1 align="center">GroupEncrypt</h1>
+<p align="center">&#169; 2023 F. Ruiz</p>
+<p>This app encrypts/decrypts files for a group of users whose public keys are contained in file &quot;GroupKeys.js&quot;.
+Currently these users are:&nbsp;<span id="userList"></span></p>
+<p id="technical">Click here for technical details.</p>
+<p>1. Enter your secret Password in the box and press the Accept button. If you check the first checkbox, your public key will be displayed in a second box. As you type your Password, a message will tell you its strength, plus a mnemonic Hashili word. For best strength, mix lowercase, capitals, numbers, and special characters; misspell words. <strong>If your Password is less than Medium, processing will be slow</strong>. You will have to enter your Password again after 5 minutes of inactivity.</p>
+<div id="pwdMsg" class="message">Password strength will be displayed here</div>
+<input type="password" id="pwdBox" class="cssbox" placeholder="Write your Password here"></input><img id='showPwdMode' class="field-icon" src="images/eye-24.png" title="click this to see/hide Password">
+&nbsp;&nbsp;
+<button id="acceptBtn" class="cssbutton">Accept</button>
+<div id="publicKeyArea">
+<div id="textBox" class="cssbox">Your public key will appear here after you press Accept</div>
+</div>
+<br>
+<input type="checkbox" id="showPublicCheck">&nbsp;Show public key
+&nbsp;&nbsp;&nbsp;
+<input type="checkbox" id="showListCheck">&nbsp;Select users
+<div id="selectArea">
+	<br>
+<table>
+<tr>
+	<tc>
+	<select class="cssbox" id='groupList' size='4' multiple title="hold Ctrl or cmd to select several users or groups"></select>
+	</tc>
+	<tc id="listText">
+		<p>&nbsp;&nbsp;Select the users or groups of users that will be able to decrypt the file.</p>
+		<p>&nbsp;&nbsp;No selection means all users.</p>
+		<p>&nbsp;&nbsp;This setting is only for encryption.</p>
+	</tc>
+</tr>
+</table>
+</div>
+	<p>&nbsp;</p>
+	<p>2. Now load the file to be encrypted or decrypted using the button below, or drag the file onto it. It will be encrypted or decrypted automatically and saved to Downloads. If you check the box, the file name will show in the space below that so it can be edited; then save to Downloads with the Save button.</p>
+<div id="fileMsg" class="message">Enter your Password first</div>
+<input type="file" id="fileIn" disabled></input>
+&nbsp;&nbsp;<input type="checkbox" id="showOutNameCheck">&nbsp;Edit output file name
+<div id="outNameArea">
+	<p>Name of the output file:</p>
+	<input type="text" id="fileOutBox" class="cssbox" placeholder="The name of the output file will appear here"></input>&nbsp;
+	<button id="saveBtn" class="cssbutton">Save</button>
+</div>
+<!--main code lives here-->
+<script src="lib/main.js"></script>
+
+<!--group keys added through this file, which contains a single object GroupKeys-->
+<script src="GroupKeys.js"></script>
+</body>
+</html>

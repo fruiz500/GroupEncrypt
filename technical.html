@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title>GroupEncrypt Details</title>
+  <meta name="Author" content="F. Ruiz">
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2113.6">
+  <style type="text/css">
+    body {background-color: #fbfbfb}
+    p.p2 {margin: 0.0px 0.0px 12.0px 0.0px; font: 12.0px Helvetica; color: #000000; -webkit-text-stroke: #000000}
+    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Courier; color: #000000; -webkit-text-stroke: #000000}
+    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Courier; color: #000000; -webkit-text-stroke: #000000; min-height: 14.0px}
+    span.s1 {font-kerning: none}
+    span.s2 {font: 12.0px Helvetica; text-decoration: underline ; font-kerning: none; color: #0000e9; -webkit-text-stroke: 0px #0000e9}
+  </style>
+</head>
+<body>
+<h1 style="margin: 0.0px 0.0px 16.1px 0.0px; text-align: center; font: 24.0px Helvetica; color: #000000; -webkit-text-stroke: #000000"><span class="s1"><b>GroupEncrypt Technical Details<span class="Apple-converted-space"> </span></b></span></h1>
+<p class="p2"><span class="s1">First a quick guide on making the GroupKeys.js file:</span></p>
+<p class="p2"><span class="s1">This file, which should reside in the same folder as the index.html (or whatever name you gave it) that loads the app, contains the public keys of all the users in the group, up to a maximum of 255 users, plus optional lists of users. Example:</span></p>
+<p class="p3"><span class="s1">const GroupKeys = {</span></p>
+<p class="p4"><span class="s1"></span><br></p>
+<p class="p3"><span class="s1">Alice:</span></p>
+<p class="p3"><span class="s1">"jxibnf9gpdpttf1acu3gamob4kt9ys8swd8ug2xaiLz2u7uqhq"</span></p>
+<p class="p3"><span class="s1">,</span></p>
+<p class="p4"><span class="s1"></span><br></p>
+<p class="p3"><span class="s1">Bob:</span></p>
+<p class="p3"><span class="s1">"oretLgajwccwb63iLdg0rneviL2tv507tr4h3rjwsom72k6rL6"</span></p>
+<p class="p3"><span class="s1">,</span></p>
+<p class="p4"><span class="s1"></span><br></p>
+<p class="p3"><span class="s1">Carol:</span></p>
+<p class="p3"><span class="s1">"tjbo7otm9pyj3xuqewLygfcx985ssbsa26wtr1dn79xb40ftsy"</span></p>
+<p class="p3"><span class="s1">,</span></p>
+<p class="p4"><span class="s1"></span><br></p>
+<p class="p3"><span class="s1">$Girls:</span></p>
+<p class="p3"><span class="s1">"Alice, Carol"</span></p>
+<p class="p4"><span class="s1"></span><br></p>
+<p class="p3"><span class="s1">};</span></p>
+<p class="p2"><span class="s1">This means that, during the app rollout period, each one of the users must load the app and enter a unique Password in the top box. This displays his/her public key in the box below it, which then he/she copies and sends to the system administrator by the most convenient means. They can be dictated over the phone. One recommended method is for the administrator to change the contents of this file before it is sent to the other users so it contains only the public key matching a temporary password that the administrator does not intend to use after deployment. This way group members can write their respective public keys in a text file and encrypt it with the app itself so only the administrator can decrypt it. These encrypted files can be placed in shared storage.</span></p>
+<p class="p2"><span class="s1">The administrator then composes the permanent GroupKeys.js file with any text editor, giving each user an identifying name, followed by a colon, and then his/her public key within quotes. Some entries can contain a list of user names instead. There must be a comma between entries, but spaces and carriage returns don't affect the result. Then the administrator uploads the file to the server (best if encrypted with the app) or distributes it to the users if they are going to run the app from file. Each user then replaces the new GroupKeys.js file in place of the old one. The app can be loaded from a web server just as easily, in which case the administrator simply replaces this file at the server.</span></p>
+<p class="p2"><span class="s1">When encryption of a file takes place, the input file is encrypted so that each one of the selected users (default: all on the list) can decrypt the output file, and nobody else. This involves first doing symmetric encryption of the file with a random 32-byte "message key", plus a random 24-byte nonce. Then the message key is encrypted asymmetrically using each user's public key, obtained from the GroupKeys.js file, and the result is added to the encrypted file. Decryption by a particular user involves finding that user's encryted message key in the encrypted file, decrypting it with his/her private key, which derives from his/her Password, and finally using the message key to decrypt the main file content.</span></p>
+<p class="p2"><span class="s1">The GroupKeys.js file also contains an entry for the unique header that encrypted files begin with, and which the app uses to determine whether or not a file loaded onto it has been previously encrypted by the app. This entry is an array of numbers 0 to 255 representing bytes. The only important thing is that none of the files to be encrypted should begin with this sequence of bytes. The more bytes, the smaller the likelihood that this will happen. Example:</span></p>
+<p class="p3"><span class="s1">const headTag = new Uint8Array([27,27,27,27,27,27,27])</span></p>
+<p class="p2"><span class="s1">GroupEncrypt is based on the elliptic curve public key cryptography algorithms of the <a href="https://nacl.cr.yp.to/"><span class="s2">NaCl suite</span></a>, which also includes XSalsa20 for symmetric encryption, plus the <a href="https://cryptobook.nakov.com/mac-and-key-derivation/scrypt"><span class="s2">SCRYPT</span></a> key derivation algorithm. Key length is 256 bits. The user-supplied Password is analyzed for strength, and the parameters of the SCRYPT algorithm are varied so that weaker Passwords are subjected to more rounds of key stretching. We call this the <a href="https://github.com/fruiz500/wisehash"><span class="s2">WiseHash</span></a> algorithm, which makes the keyspace quite resistant to dictionary attack, since attackers are penalized for including weak Passwords in their search, or otherwise risk missing them. The encryption algorithm is similar to the Anonymous mode in <a href="https://github.com/fruiz500/passlok"><span class="s2">PassLok</span></a>, also by F. Ruiz, except that it uses no extra data such as user email, and there is no padding that might contain a secret message. Files encrypted by this app cannot be decrypted in PassLok, and vice-versa.</span></p>
+<p class="p2"><span class="s1">Processing is done by the browser's built-in JavaScript engine, which makes the app very fast and cross-browser compatible. It can run on mobile devices as well. Files up to 1 GB in size can be handled, subject to memory availability. In this implementation, the data is input and output as local files, but it is easy to modify the code so the data is exchanged with a server instead. The format for the file data is uint8 arrays, each element containing one binary byte. The name of the input file data is fileInBin, that of the output data is fileOutBin.</span></p>
+</body>
+</html>

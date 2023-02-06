@@ -1,0 +1,15 @@
+CACHE MANIFEST 
+# last edited for v0.1.0
+style.css
+images/icon24.png
+images/eye-24.png
+images/hide-24.png
+lib/license.js
+lib/dictionary_en.js
+lib/main.js
+lib-opensrc/nacl.js
+lib-opensrc/nacl-util.js
+lib-opensrc/scrypt-async.js
+groupencrypt.html
+GroupKeys.js
+technical.html
