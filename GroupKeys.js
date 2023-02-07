@@ -1,21 +1,30 @@
+//Group name, which gets used to salt the user Passwords
+const GroupName = "Sample Group";
+
 //this object contains user names and their public keys; make sure there are commas between entries; public keys within quotes
 const GroupKeys = {
 
 Alice:
-"jxibnf9gpdpttf1acu3gamob4kt9ys8swd8ug2xaiLz2u7uqhq"
+"it0oh6L44k2fnb4793kekbkanet8kdkfu9y5541kpojb3mk5om"
 ,
 
 Bob:
-"oretLgajwccwb63iLdg0rneviL2tv507tr4h3rjwsom72k6rL6"
+"acnkhinpurLgcjgcuLk1gwtn3zLyy68ystissirxumtxm4ctw6"
 ,
 
 Carol:
-"tjbo7otm9pyj3xuqewLygfcx985ssbsa26wtr1dn79xb40ftsy"
+"r9t28eq9xa0L35wx66pngko0zao7p3r8kr3ahtjnw74aar3fgu"
 ,
 
-$Girls:
+$Adam:                                                  //former user; kept so that files encrypted by this user can still be decrypted
+"wv6ndfmn8ntifp6k4xbncs3vjf8rxi8g7f9czfsab78vuyyxsa"
+,
+
+"==Girls==":
 "Alice, Carol"
+
 
 };
 
+//Code added at the start of encrypted files, so they can be recognized
 const headTag = new Uint8Array([27,27,27,27,27,27,27])                  //no need to change this, but it can be done
