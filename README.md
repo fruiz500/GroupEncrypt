@@ -27,12 +27,12 @@ Carol:
 "r9t28eq9xa0L35wx66pngko0zao7p3r8kr3ahtjnw74aar3fgu"
 ,
 
-$Adam:                                                  //former user; kept so that files encrypted by this user can still be decrypted; name begins with $
-"wv6ndfmn8ntifp6k4xbncs3vjf8rxi8g7f9czfsab78vuyyxsa"
+$Adam:
+"wv6ndfmn8ntifp6k4xbncs3vjf8rxi8g7f9czfsab78vuyyxsa"    //former user; kept so that files encrypted by this user can still be decrypted; name begins with $
 ,
 
-"==Girls==":											//list containing some active users
-"Alice, Carol"
+"==Girls==":
+"Alice, Carol"     //list containing some active users
 
 };
 
