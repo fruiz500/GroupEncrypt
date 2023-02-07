@@ -28,11 +28,11 @@ Carol:
 ,
 
 $Adam:
-"wv6ndfmn8ntifp6k4xbncs3vjf8rxi8g7f9czfsab78vuyyxsa"    //former user; kept so that files encrypted by this user can still be decrypted; name begins with $
+"wv6ndfmn8ntifp6k4xbncs3vjf8rxi8g7f9czfsab78vuyyxsa"
 ,
 
 "==Girls==":
-"Alice, Carol"     //list containing some active users
+"Alice, Carol"
 
 };
 
