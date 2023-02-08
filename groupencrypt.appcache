@@ -11,5 +11,4 @@ lib-opensrc/nacl.js
 lib-opensrc/nacl-util.js
 lib-opensrc/scrypt-async.js
 groupencrypt.html
-GroupKeys.js
 technical.html
