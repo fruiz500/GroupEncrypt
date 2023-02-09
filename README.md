@@ -7,7 +7,7 @@ Tweet NaCl crypto library by Dmitry Chestnykh, v1.0.3. https://github.com/dchest
 
 scrypt-async-js KDF by Dmitry Chestnykh, v2.0.1. https://github.com/dchest/scrypt-async-js
 
-User access to the encrypted output is controlled by the file GroupKeys.js, which must be edited for each particular implementation. This file, which should reside in the same folder as the index.html (or whatever name you gave it) that loads the app, contains the name of the group. This is used to salt the user passwords and make dictionary attacks harder. Example:
+User access to the encrypted output is controlled by the file GroupKeys.js, which must be edited for each particular implementation. This file, which should reside in the same folder as the index.html (or whatever name you gave it) that loads the app, contains the name of the group. This is used to salt the user passwords and make dictionary attacks a little harder. Example:
 
 const GroupName = "Sample Group";
 
@@ -44,9 +44,12 @@ When encryption of a file takes place, the input file is encrypted so that each 
 
 In the event that a message has been encrypted by a user that has left the group, decryption is still possible if the former user's public key is still included in the GroupKeys object, with the name prefaced by a '$' character so this entry can be differentiated. In this case, the public key is placed in a special array for legacy keys and the user's name is not listed as a recipient.
 
-The GroupKeys.js file also contains an entry for the unique header that encrypted files begin with, and which the app uses to determine whether or not a file loaded onto it has been previously encrypted by the app. This entry is an array of numbers 0 to 255 representing bytes. The only important thing is that none of the files to be encrypted should begin with this sequence of bytes. The more bytes, the smaller the likelihood that this will happen. Example:
+In addition to the Single file mode described above, there is a Folder mode where the encryption of a particular file is done with a random symmetric key, and this key is added to the encryted file after encrypting it with a Folder Key common to a number of files. The Folder Key should be present in memory before encryption or decryption can proceed in this mode. Folder Keys are stored in special files encrypted in Single file mode, but containing no payload. Upon decryption, the message key is stored in memory to serve as Folder Key for files loaded after.
 
-const headTag = new Uint8Array([27,27,27,27,27,27,27])
+The GroupKeys.js file also contains entries for the unique headers that encrypted files begin with, and which the app uses to determine whether or not a file loaded onto it has been previously encrypted by the app, and in which mode. Each entry is an array of numbers 0 to 255 representing bytes. The only important thing is that none of the files to be encrypted should begin with one of these sequences of bytes. The more bytes, the smaller the likelihood that this will happen. Example:
+
+const headTag1 = new Uint8Array([27,27,27,27,27,27,27]),         //single file mode
+headTag2 = new Uint8Array([27,27,27,27,27,27,81]);               //folder mode
 
 GroupEncrypt is based on the elliptic curve public key cryptography algorithms of the NaCl suite, which also includes XSalsa20 for symmetric encryption, plus the SCRYPT key derivation algorithm. Key length is 256 bits. The user-supplied Password is analyzed for strength, and the parameters of the SCRYPT algorithm are varied so that weaker Passwords are subjected to more rounds of key stretching. We call this the WiseHash algorithm, which makes the keyspace quite resistant to dictionary attack, since attackers are penalized for including weak Passwords in their search, or otherwise risk missing them. The encryption algorithm is similar to the Signed mode in PassLok, also by F. Ruiz, except that it uses no extra data such as user email, there is no padding that might contain a secret message, and the first 8 bytes of the sender's public key are added to speed up decryption. Files encrypted by this app cannot be decrypted in PassLok, and vice-versa.
 
