@@ -27,4 +27,5 @@ $Adam:                                                  //former user; kept so t
 };
 
 //Code added at the start of encrypted files, so they can be recognized
-const headTag = new Uint8Array([27,27,27,27,27,27,27])                  //no need to change this, but it can be done
+const headTag1 = new Uint8Array([27,27,27,27,27,27,27]);                  //File mode; no need to change this, but it can be done
+const headTag2 = new Uint8Array([27,27,27,27,27,27,81])                   //Folder mode

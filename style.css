@@ -66,6 +66,9 @@ body {
 	animation: blink .75s linear infinite;
 	color: blue;
 }
+.hide {
+	display: none;
+}
  @-webkit-keyframes blink {
  0% {
 opacity: 1;
