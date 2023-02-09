@@ -48,8 +48,8 @@ In addition to the Single file mode described above, there is a Folder mode wher
 
 The GroupKeys.js file also contains entries for the unique headers that encrypted files begin with, and which the app uses to determine whether or not a file loaded onto it has been previously encrypted by the app, and in which mode. Each entry is an array of numbers 0 to 255 representing bytes. The only important thing is that none of the files to be encrypted should begin with one of these sequences of bytes. The more bytes, the smaller the likelihood that this will happen. Example:
 
-const headTag1 = new Uint8Array([27,27,27,27,27,27,27]),         //single file mode
-headTag2 = new Uint8Array([27,27,27,27,27,27,81]);               //folder mode
+const headTag1 = new Uint8Array([27,27,27,27,27,27,27]),
+headTag2 = new Uint8Array([27,27,27,27,27,27,81]);
 
 GroupEncrypt is based on the elliptic curve public key cryptography algorithms of the NaCl suite, which also includes XSalsa20 for symmetric encryption, plus the SCRYPT key derivation algorithm. Key length is 256 bits. The user-supplied Password is analyzed for strength, and the parameters of the SCRYPT algorithm are varied so that weaker Passwords are subjected to more rounds of key stretching. We call this the WiseHash algorithm, which makes the keyspace quite resistant to dictionary attack, since attackers are penalized for including weak Passwords in their search, or otherwise risk missing them. The encryption algorithm is similar to the Signed mode in PassLok, also by F. Ruiz, except that it uses no extra data such as user email, there is no padding that might contain a secret message, and the first 8 bytes of the sender's public key are added to speed up decryption. Files encrypted by this app cannot be decrypted in PassLok, and vice-versa.
 
