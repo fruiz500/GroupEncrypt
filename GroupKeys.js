@@ -23,9 +23,8 @@ $Adam:                                                  //former user; kept so t
 "==Girls==":
 "Alice, Carol"
 
-
 };
 
 //Code added at the start of encrypted files, so they can be recognized
-const headTag1 = new Uint8Array([27,27,27,27,27,27,27]);                  //File mode; no need to change this, but it can be done
+const headTag1 = new Uint8Array([27,27,27,27,27,27,27]);                  //File by File mode; no need to change these two, but it can be done
 const headTag2 = new Uint8Array([27,27,27,27,27,27,81])                   //Folder mode
