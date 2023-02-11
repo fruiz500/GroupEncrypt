@@ -142,9 +142,6 @@ opacity: 0;
 #userList {
 	color: blue;
 }
-#publicKeyArea {
-	display: none;
-}
 #outNameArea {
 	display: none;
 }
@@ -156,19 +153,16 @@ opacity: 0;
 	font-size: 18px;
 	padding: 30px;
 	text-decoration: none;
-	color: #666666;
+	color: rgba(0, 0, 0, 0);
 	background: #e6e6e6;
 }
-#fileIn:hover:enabled {
+#fileIn:hover {
 	text-decoration: none;
 	cursor: pointer;
 	background: #A5B9FD;
 }
 #groupList {
 	width: 40%;
-}
-#selectArea {
-	display: none;
 }
 #listText {
 	position: absolute;
