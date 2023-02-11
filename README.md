@@ -7,7 +7,7 @@ Tweet NaCl crypto library by Dmitry Chestnykh, v1.0.3. https://github.com/dchest
 
 scrypt-async-js KDF by Dmitry Chestnykh, v2.0.1. https://github.com/dchest/scrypt-async-js
 
-User access to the encrypted output is controlled by the file GroupKeys.js, which must be edited for each particular implementation. This file, which should reside in the same folder as the index.html (or whatever name you gave it) that loads the app, contains the name of the group. This is used to salt the user passwords and make dictionary attacks a little harder. Example:
+User access to the encrypted output is controlled by the file GroupKeys.js, which must be edited for each particular implementation. This file, which should reside in the same folder as the index.html (or whatever name you gave it) that loads the app, contains the name of the group. This is used to salt the user passwords and make rainbow table attacks a little harder. Example:
 
 const GroupName = "Sample Group";
 
@@ -42,7 +42,7 @@ The administrator then composes the permanent GroupKeys.js file with any text ed
 
 When encryption of a file takes place, the input file is encrypted so that each one of the selected users (default: all on the list) can decrypt the output file, and nobody else. This involves first doing symmetric encryption of the file with a random 32-byte "message key", plus a random 24-byte nonce. Then the message key is encrypted with the symmetric key derived from each user's public key, obtained from the GroupKeys.js file, and the sender's private key, and the result is added to the encrypted file. Decryption by a particular user involves finding that user's encryted message key in the encrypted file, decrypting it with the combination of his/her private key, which derives from his/her Password, and the sender's public key (which is identified by its first 8 bytes being added to the encrypted message right before all the encrypted keys), and finally using the message key to decrypt the main file content.
 
-In the event that a message has been encrypted by a user that has left the group, decryption is still possible if the former user's public key is still included in the GroupKeys object, with the name prefaced by a '$' character so this entry can be differentiated. In this case, the public key is placed in a special array for legacy keys and the user's name is not listed as a recipient.
+In the event that a message has been encrypted by a user that has left the group, decryption is still possible if the former user's public key is still included in the GroupKeys object, with the name prefaced by a '$' character so this entry can be differentiated. In this case, the public key is never used for encryption, and the user's name cannot be listed as a recipient, but the public key is available for decryption.
 
 In addition to the Single file mode described above, there is a Folder mode where the encryption of a particular file is done with a random symmetric key, and this key is added to the encryted file after encrypting it with a Folder Key common to a number of files. The Folder Key should be present in memory before encryption or decryption can proceed in this mode. Folder Keys are stored in special files encrypted in Single file mode, but containing no payload. Upon decryption, the message key is stored in memory to serve as Folder Key for files loaded after.
 
