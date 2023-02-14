@@ -46,7 +46,7 @@ In the event that a message has been encrypted by a user that has left the group
 
 In addition to the File by File mode described above, there is a Folder mode where the encryption of a particular file is done with a random symmetric key, and this key is added to the encryted file after encrypting it with a Folder Key common to a number of files. The Folder Key should be present in memory before encryption or decryption can proceed in this mode. Folder Keys are stored in special files encrypted in File by File mode, but containing no payload. Upon decryption, the message key is stored in memory to serve as Folder Key for files loaded after.
 
-The GroupKeys.js file also contains an entry for the unique header that encrypted files begin with, and which the app uses to determine whether or not a file loaded onto it has been previously encrypted by the app. This entry is an array of numbers 0 to 255 representing bytes. The only important thing is that none of the files to be encrypted should begin with one of this sequences of bytes. The more bytes, the smaller the likelihood that this will happen. Example:
+The GroupKeys.js file also contains an entry for the unique header that encrypted files begin with, and which the app uses to determine whether or not a file loaded onto it has been previously encrypted by the app. This entry is an array of numbers 0 to 255 representing bytes. The only important thing is that none of the files to be encrypted should begin with this sequence of bytes. The more bytes, the smaller the likelihood that this will happen. Example:
 
 const headTag = new Uint8Array([27,27,27,27,27,27,27]);
 
