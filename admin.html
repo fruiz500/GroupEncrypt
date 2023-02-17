@@ -13,7 +13,7 @@
 </head>
 <body>
 <h1>GroupEncrypt Administration</h1>
-<p>This page simply allows an authorized Administrator to edit the GroupKeys.json file containing the users' public keys and other settings. <span id="technical"> Click here for technical details.</span></p>
+<p>This page simply allows an authorized Administrator to edit the GroupKeys.js file containing the users' public keys and other settings. <span id="technical"> Click here for technical details.</span></p>
 <p>Usage: Fill the password field and edit the content box, then click Submit. If the password is validated, the file will be updated on the server.</p>
 <form method="post" action="admin.php">
 <p>Write your password:</p>
@@ -29,7 +29,7 @@
 //fetch file content and place it in text area. Adapted from https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Fetching_data
 
 // Call `fetch()`, passing in the URL.
-fetch('GroupKeys.json')
+fetch('GroupKeys.js')
   // fetch() returns a promise. When we have received a response from the server,
   // the promise's `then()` handler is called with the response.
   .then((response) => {
