@@ -15,7 +15,7 @@ for($i = 0; $i < count($acceptedHashes); $i++){
 };
 
 if($isPasswordCorrect){
-    $myfile = fopen("GroupKeys.json", "w") or die("Unable to open file!");
+    $myfile = fopen("GroupKeys.js", "w") or die("Unable to open file!");
     $txt = $_POST["code"];                          //submitted by front end
     fwrite($myfile, $txt);
     fclose($myfile);
