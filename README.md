@@ -31,6 +31,7 @@ var GroupKeys = {
 "Alice, Carol"
 
 }
+
 Notes: "$Adam" is a former user, kept so that files encrypted by this user can still be decrypted; the name begins with $. "==Girls==" is a list containing some active users.
 
 This means that, during the app rollout period, each one of the users must load the app and enter a unique Password in the box, which won't be accepted if the matching public key is not in the database file. This displays his/her public key in a box below it, which then he/she copies and sends to a system Administrator by the most convenient means. Public keys are in base36 so they can be dictated over the phone (all letters lowercase, except for capital 'L' so it is not mistaken for number 1). Public keys are not secret, but if group members are going to run the app from file rather than from a server, you get a little extra security by sending those keys to the administrator through secure channels.
