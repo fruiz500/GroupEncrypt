@@ -1,13 +1,13 @@
 # GroupEncrypt
-Encrypts/decrypts files for a group of users
+Encrypts/decrypts files for a group of users. A typical usage scenario would be adding zero-knowledge encryption to a file sharing service that does not have this feature natively.
 
-This webapp is based on NaCl ans SCRYPT. It uses the following open-source code from GitHub, included in the /lib-opensrc folder:
+This webapp is based on NaCl and SCRYPT. It uses the following open-source code from GitHub, included in the /lib-opensrc folder:
 
 Tweet NaCl crypto library by Dmitry Chestnykh, v1.0.3. https://github.com/dchest/tweetnacl-js
 
 scrypt-async-js KDF by Dmitry Chestnykh, v2.0.1. https://github.com/dchest/scrypt-async-js
 
-User access to the encrypted output is controlled by the file GroupKeys.js, which must be edited for each particular implementation. This file, which should reside in the same folder as the index.html that loads the app, contains a single object GroupKeys with all the settings. First, the name of the group. This is used to salt the user passwords and make rainbow table attacks a little harder. Then the unique header that encrypted files begin with, and which the app uses to determine whether or not a file loaded onto it has been previously encrypted by the app. This entry is an array of numbers 0 to 255 representing bytes. The only important thing is that none of the files to be encrypted should begin with this sequence of bytes. The more bytes, the smaller the likelihood that this will happen. Finally, the file also contains the public keys of all the users in the group, up to a maximum of 255 active users, plus optional lists of users. Example:
+User access to the encrypted output is controlled by the file GroupKeys.js, which must be edited for each particular implementation, although the page admin.html is designed so it can be done without editing the server code. This file, which should reside in the same folder as the index.html that loads the app, contains a single object GroupKeys with all the settings. First, the name of the group. This is used to salt the user passwords and make rainbow table attacks a little harder. Then the unique header that encrypted files begin with, and which the app uses to determine whether or not a file loaded onto it has been previously encrypted by the app. This entry is an array of numbers 0 to 255 representing bytes. The only important thing is that none of the files to be encrypted should begin with this sequence of bytes. The more bytes, the smaller the likelihood that this will happen. Finally, the file also contains the public keys of all the users in the group, up to a maximum of 255 active users, plus optional lists of users. Example:
 
 var GroupKeys = {
 
