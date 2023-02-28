@@ -37,46 +37,42 @@
 </head>
 
 <body>
-<h1 align="center">GroupEncrypt</h1>
-<p align="center">&#169; 2023 F. Ruiz</p>
-<p>This app encrypts/decrypts files for a group of users named <span id="groupNameBox"></span> whose public keys are contained in file &quot;GroupKeys.js&quot;.<span id="admin"> Click here for Administrator page.</span></p>
-<div id="userListArea" class="hide">Currently these users are:&nbsp;<span id="userList"></span></div>
-<p>1. Enter your secret Password in the box and press the Accept button. As you type your Password, a message will tell you its strength, plus a mnemonic Hashili word below it. For best strength, mix lowercase, capitals, numbers, and special characters; misspell words. <strong>If your Password is less than Medium, things will be slow</strong>. All processing is local; nothing is sent out. You will have to re-enter your Password after 5 minutes of inactivity.</p>
+<h1 class="center">GroupEncrypt</h1>
+<p class="center">&#169; 2023 F. Ruiz</p>
+<p>This app encrypts/decrypts files for a group of users named <span id="groupNameBox"></span>.</p>
+<p id="step1">1. Enter your secret Password in the box and press the Accept button. As you type your Password, a message will tell you its strength, plus a mnemonic Hashili word below it. For best strength, mix lowercase, capitals, numbers, and special characters; misspell words. <strong>If your Password is less than Medium, things will be slow</strong>. All processing is local; nothing is sent out. You will have to re-enter your Password after 5 minutes of inactivity.</p>
+<div id="pwdArea">
 <div id="pwdMsg" class="message">Password strength will be displayed here</div>
 <input type="password" id="pwdBox" class="cssbox" placeholder="Write your Password here"></input><img id='showPwdMode' class="field-icon" src="images/eye-24.png" title="click this to see/hide Password">
 &nbsp;&nbsp;
 <button id="acceptBtn" class="cssbutton">Accept</button>
-<div id="publicKeyArea" class="hide">
-<div id="publicBox" class="cssbox" title="This is your public key">Your public key will appear here after you press Accept</div>
 </div>
-<br>
-<span id="checkArea" class="hide">
-<input type="checkbox" id="showPublicCheck">&nbsp;Show public key
-&nbsp;&nbsp;&nbsp;
-<input type="checkbox" id="showListCheck">&nbsp;Select users for File by File encryption
-</span>
 <div id="selectArea" class="hide">
+	<br>
+	<div id="userListArea">Selected users:&nbsp;<span id="userList"></span></div>
 	<br>
 <table>
 <tr>
 	<tc>
-	<select class="cssbox" id='groupList' size='4' multiple title="hold Ctrl or cmd to select several users or groups"></select>
+	<select class="cssbox" id='groupList' size='7' multiple title="hold Ctrl or cmd to select several users or groups"></select>
 	</tc>
 	<tc id="listText">
-		<p>&nbsp;&nbsp;Select the users or groups of users who can decrypt</p>
-		<p>&nbsp;&nbsp;No selection means all users</p>
-		<p>&nbsp;&nbsp;This has no effect when decrypting</p>
+		<p>&emsp;&emsp;No selection means all users</p>
+		<p>&emsp;&emsp;&emsp;<button id="makeKeyBtn" title="Make or update Folder Keys. For Administrator use">New Folder Key</button></p>
+		<p>&emsp;&emsp;&emsp;<button id="adminBtn" title="Edit the user database">Edit Users</button></p>
+		<p>&emsp;&emsp;&emsp;<input type="checkbox" id="singleMode">&nbsp;encrypt File by File</p>
 	</tc>
 </tr>
 </table>
 </div>
 <div id="fileArea" class="hide">
 	<p>&nbsp;</p>
-	<p>2. First load an encrypted Folder Key (except for File by File mode) using the button below, or drag the file onto it. Then load the files to be processed, by the same method. The files will be encrypted or decrypted automatically and saved to Downloads. You can process several files at the same time.</p>
+	<p id="step2">2. Now load an encrypted Folder Key by dragging it into the area below, or click it to navigate to the file.</p>
+	<p id="step3" class="hide">3. Finally, load the files to be processed by the same method. The files will be encrypted or decrypted automatically and saved to Downloads. You can process several files at a time.</p>
 <div id="fileMsg" class="message">Enter your Password first</div>
-<input type="file" id="fileIn" multiple></input>
-&nbsp;&nbsp;&nbsp;&nbsp;<input type="checkbox" id="singleMode">&nbsp;File by File
-&nbsp;&nbsp;&nbsp;&nbsp;<button id="makeKeyBtn" title="Make or update Folder Keys. For Administrator use">New Folder Key</button>
+<input type="file" class="fileInit" id="fileIn" multiple></input>
+<br><br>
+<span id="admin">Click here to toggle Administrator extras.</span>
 </div>
 </body>
 </html>

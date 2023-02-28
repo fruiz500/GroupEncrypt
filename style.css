@@ -51,7 +51,7 @@ body {
 }
 .message {
     white-space: pre-line;
-    height: 40px;
+    height: 60px;
 }
 .field-icon {
   margin-left: -24px;
@@ -68,6 +68,9 @@ body {
 }
 .hide {
 	display: none;
+}
+.center {
+	text-align: center;
 }
  @-webkit-keyframes blink {
  0% {
@@ -151,15 +154,20 @@ opacity: 0;
 	border-radius: 10px;
 	font-family: Arial;
 	font-size: 18px;
-	padding: 30px;
+	padding: 100px;
 	text-decoration: none;
 	color: rgba(0, 0, 0, 0);
 	background: #e6e6e6;
 }
-#fileIn:hover {
+#fileIn.fileInit:hover {
 	text-decoration: none;
 	cursor: pointer;
 	background: #A5B9FD;
+}
+#fileIn.fileReady:hover {
+	text-decoration: none;
+	cursor: pointer;
+	background: #aee5a1;
 }
 #groupList {
 	width: 40%;
