@@ -149,9 +149,9 @@ opacity: 0;
 	display: none;
 }
 #fileIn {
-	-webkit-border-radius: 10px;
-	-moz-border-radius: 10px;
-	border-radius: 10px;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	border-radius: 20px;
 	font-family: Arial;
 	font-size: 18px;
 	padding: 100px;
@@ -163,11 +163,15 @@ opacity: 0;
 	text-decoration: none;
 	cursor: pointer;
 	background: #A5B9FD;
+	outline: 2px dashed #ccc;
+	outline-offset: -10px;
 }
 #fileIn.fileReady:hover {
 	text-decoration: none;
 	cursor: pointer;
 	background: #aee5a1;
+	outline: 2px dashed #ccc;
+	outline-offset: -10px;
 }
 #groupList {
 	width: 40%;
