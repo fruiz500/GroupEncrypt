@@ -1,5 +1,5 @@
 CACHE MANIFEST 
-# last edited for v0.1.0
+# last edited for v3.2.2023
 style.css
 images/icon24.png
 images/eye-24.png
@@ -12,5 +12,7 @@ lib/main.js
 lib-opensrc/nacl.js
 lib-opensrc/nacl-util.js
 lib-opensrc/scrypt-async.js
-groupencrypt.html
+index.html
 technical.html
+admin.html
+admin.php
