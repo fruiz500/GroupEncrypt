@@ -58,6 +58,12 @@ body {
   height: 16px;
   z-index: 2;
 }
+.hide {
+	display: none;
+}
+.center {
+	text-align: center;
+}
 .blink {
 	-webkit-animation: blink .75s linear infinite;
 	-moz-animation: blink .75s linear infinite;
@@ -65,12 +71,6 @@ body {
 	-o-animation: blink .75s linear infinite;
 	animation: blink .75s linear infinite;
 	color: blue;
-}
-.hide {
-	display: none;
-}
-.center {
-	text-align: center;
 }
  @-webkit-keyframes blink {
  0% {
@@ -142,13 +142,7 @@ opacity: 0;
 opacity: 0;
 }
 }
-#userList {
-	color: blue;
-}
-#outNameArea {
-	display: none;
-}
-#fileIn {
+.dropTarget {
 	-webkit-border-radius: 20px;
 	-moz-border-radius: 20px;
 	border-radius: 20px;
@@ -158,20 +152,26 @@ opacity: 0;
 	text-decoration: none;
 	color: rgba(0, 0, 0, 0);
 	background: #e6e6e6;
+	display: block;
+	text-align: center;
 }
-#fileIn.fileInit:hover {
-	text-decoration: none;
+.smallImg {
+	width: 50%;
+}
+.dropHover {
 	cursor: pointer;
 	background: #A5B9FD;
-	outline: 2px dashed #ccc;
+	outline: 2px dashed #eee;
 	outline-offset: -10px;
 }
-#fileIn.fileReady:hover {
-	text-decoration: none;
+.dropReady {
 	cursor: pointer;
 	background: #aee5a1;
-	outline: 2px dashed #ccc;
+	outline: 5px dashed white;
 	outline-offset: -10px;
+}
+#userList {
+	color: blue;
 }
 #groupList {
 	width: 40%;

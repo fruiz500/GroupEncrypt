@@ -70,7 +70,10 @@
 	<p id="step2">2. Now load an encrypted Folder Key by dragging it into the area below, or click it to navigate to the file.</p>
 	<p id="step3" class="hide">3. Finally, load the files to be processed by the same method. The files will be encrypted or decrypted automatically and saved to Downloads. You can process several files at a time.</p>
 <div id="fileMsg" class="message">Enter your Password first</div>
-<input type="file" class="fileInit" id="fileIn" multiple></input>
+<input type="file" id="fileIn" class="hide" multiple></input>
+<label for="fileIn" id="fileLbl" class="dropTarget" title="drop a Folder Key here">
+	<img id="fileImg" class="smallImg" src="images/key-white.png">
+</label>
 <br><br>
 <span id="admin">Click here to toggle Administrator extras.</span>
 </div>
