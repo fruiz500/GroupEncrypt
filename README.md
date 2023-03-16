@@ -7,6 +7,10 @@ Tweet NaCl crypto library by Dmitry Chestnykh, v1.0.3. https://github.com/dchest
 
 scrypt-async-js KDF by Dmitry Chestnykh, v2.0.1. https://github.com/dchest/scrypt-async-js
 
+You can test this app by heading to https://fruiz500.github.io/groupencrypt
+
+Four dummy users are built into the demo: Alice, Bob, Carol, and legacy user Adam. Thier respective Passwords are "Hi, I'm Alice" and so forth, each time replacing "Alice" with the corresponding name. No Administrator password is provided.
+
 User access to the encrypted output is controlled by the file GroupKeys.js, which must be edited for each particular implementation, although the page admin.html is designed so it can be done without editing the server code. This file, which should reside in the same folder as the index.html that loads the app, contains a single object GroupKeys with all the settings. First, the name of the group. This is used to salt the user passwords and make rainbow table attacks a little harder. Then the unique header that encrypted files begin with, and which the app uses to determine whether or not a file loaded onto it has been previously encrypted by the app. This entry is an array of numbers 0 to 255 representing bytes. The only important thing is that none of the files to be encrypted should begin with this sequence of bytes. The more bytes, the smaller the likelihood that this will happen. Finally, the file also contains the public keys of all the users in the group, up to a maximum of 255 active users, plus optional lists of users. Example:
 
 var GroupKeys = {
