@@ -6,7 +6,7 @@ var GroupKeys = {
 
     //the rest are user names and their public keys; make sure there are commas between entries; public keys within quotes
 
-    "Alice":
+    "Alice (admin)":
     "it0oh6L44k2fnb4793kekbkanet8kdkfu9y5541kpojb3mk5om",
 
     "Bob":
@@ -15,10 +15,16 @@ var GroupKeys = {
     "Carol":
     "r9t28eq9xa0L35wx66pngko0zao7p3r8kr3ahtjnw74aar3fgu",
 
-    "$Adam":                                                  //former user; kept so that files encrypted by this user can still be decrypted
+    "$Adam":                                               //former user; kept so that files encrypted by this user can still be decrypted
     "wv6ndfmn8ntifp6k4xbncs3vjf8rxi8g7f9czfsab78vuyyxsa",
 
     "==Girls==":
-    "Alice, Carol"
+    "Alice (admin), Carol",
+
+    "==Lovers==":
+    "Alice (admin), Bob",
+
+    "==AllGroups==":
+    "==Girls==, ==Lovers=="
 
 }
