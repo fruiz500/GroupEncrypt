@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta charset="UTF-8">
+<title>GroupEncrypt Help</title>
+<meta charset="UTF-8" appcache="groupencrypt.appcache">
+<meta name="author" content="F. Ruiz">
+<meta name="robots" content="index">
+<meta name="viewport" content="width=device-width, minimum-scale=1, maximum-scale=1, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="apple-touch-icon" href="images/icon24.png">
+<link rel="shortcut icon" type="image/x-icon" href="images/icon24.png">
+<link href="style.css" rel="stylesheet">
+</head>
+<body>
+<h1><b>GroupEncrypt Help</b></h1>
+<h2>User Instructions:</h2>
+<h3>Setting Up Your Password:</h3>
+<p>When you first open the app, you'll be prompted to create a strong password. Follow the guidelines provided to ensure it is secure. As you type your password, the app will give you a score to help you gauge its strength. Once you've entered your password, take a moment to note the "Hashili" word that appears below it. This word confirms that you've typed your password correctly. You can toggle the visibility of your password using the eye icon within the password box. If you forget your password, the app won't let you proceed beyond this step.</p>
+
+<h3>Logging In:</h3>
+<p>Unlike other apps, you don't need to create a username. Your password alone will be used to identify you. The app generates a pair of private and public keys based on your password. When you first enter your password, you'll be denied access because the app doesn't recognize you yet. To gain access, you need to share your ID, which will be displayed, with your group administrator.</p>
+
+<h3>Using Encryption Modes:</h3>
+<p><b>Default Mode:</b> &nbsp;In this mode, you can encrypt or decrypt files individually without the need for a Folder Key. It defaults to encrypting so administrators can decrypt. The Administrator extras allow you to select other recipients.</p>
+<p><b>Folder Mode:</b> &nbsp;This mode is used for encrypting files in shared folders so that user access can be changed without re-encrypting every file. It requires loading an encrypted Folder Key file before encrypting or decrypting files.</p>
+
+<h3>How to Encrypt and Decrypt Files:</h3>
+<p>Drag and drop files onto the designated area in the app to encrypt or decrypt them.
+Output files will be saved in your Downloads folder.</p>
+<br>
+<h2>Administrator Instructions:</h2>
+<h3>Deploying the App:</h3>
+<p>You can choose to deploy the app either locally or on a web server. If deployed locally, you'll need to provide users with updated GroupKeys.js files manually. If deployed on a web server, users will receive updates automatically, but their public keys will be visible to anyone who knows the app's URL.</p>
+
+<h3>Enrolling New Members:</h3>
+<p>New members need to provide their ID to the administrator for enrollment. Once received, the administrator updates the GroupKeys.js file with the new member's name and ID. Administrator names should contain the string "(admin)" somewhere.</p>
+
+<h3>Managing File Access:</h3>
+<p>Admins can update folder access by loading its _FolderKey.crypt file and selecting the appropriate group members.</p>
+
+<h3>Removing Members:</h3>
+<p>Rather than removing members outright, admins can designate them as "Legacy" members by prepending a "$" character to their names in GroupKeys.js. This allows remaining members to decrypt files encrypted by the Legacy member. Legacy member names should be removed from all lists containing them.</p>
+</body>
+</html>
