@@ -40,7 +40,7 @@
 <h1 class="center">GroupEncrypt</h1>
 <p class="center">&#169; 2024 F. Ruiz</p>
 <p>This app encrypts/decrypts files for a group of users named <span id="groupNameBox"></span>. <span id="help">Click here for Help</span></p>
-<p id="step1">1. Enter your secret Password in the box and press the Accept button. As you type your Password, a message will tell you its strength, plus a mnemonic Hashili word below it. For best strength, mix lowercase, capitals, numbers, and special characters; misspell words. <strong>If your Password is less than Medium, things will be slow</strong>. All processing is local; nothing is sent out. You will have to re-enter your Password after 5 minutes of inactivity.</p>
+<p id="step1">1. Enter your secret Password in the box and press the Accept button. All processing is local; nothing is sent out. You will have to re-enter your Password after 5 minutes of inactivity.</p>
 <div id="pwdArea">
 <div id="pwdMsg" class="message">Password strength will be displayed here</div>
 <input type="password" id="pwdBox" class="cssbox" placeholder="Write your Password here"></input><img id='showPwdMode' class="field-icon" src="images/eye-24.png" title="click this to see/hide Password">
@@ -57,18 +57,17 @@
 	<select class="cssbox" id='groupList' size='7' multiple title="hold Ctrl or cmd to select several users or groups"></select>
 	</tc>
 	<tc id="listText">
-		<p>&emsp;&emsp;No selection means all admin</p>
 		<p>&emsp;&emsp;&emsp;<button id="makeKeyBtn" title="Make or update a Folder Key for selected users. For Administrator use">New Folder Key</button></p>
 		<p>&emsp;&emsp;&emsp;<button id="adminBtn" title="Edit the user database remotely">Edit Users</button></p>
+		<p title="in Folder mode all files use the same key; you start by loading an encrypted Folder key">&emsp;&emsp;&emsp;<input type="checkbox" id="folderMode">&nbsp;Folder mode</p>
 	</tc>
 </tr>
 </table>
 </div>
 <div id="fileArea" class="hide">
 	<p>&nbsp;</p>
-	<p id="step2" class="">2. Now load a file by dragging it into the area below, or click it to navigate to the file (default: encrypt for admin).</p>
-	<p id="step2b" class="hide">2. Now load an encrypted Folder Key by dragging it into the area below, or click it to navigate to the file.</p>
-	<p title="in Folder mode all files use the same key; you start by loading an encrypted Folder key">&emsp;&emsp;&emsp;<input type="checkbox" id="folderMode">&nbsp;Folder mode</p>
+	<p id="step2" class="">2. Now load a file or a Folder Key by dragging it into the area below, or click it to navigate to the file. Default: encrypt for Admin.</p>
+	<p id="step2b" class="hide">2. Now load a Folder Key by dragging it into the area below, or click it to navigate to the file.</p>
 	<p id="step3" class="hide">3. Finally, load the files to be processed by the same method. The files will be encrypted or decrypted automatically and saved to Downloads. You can process several files at a time.</p>
 <div id="fileMsg" class="message">Enter your Password first</div>
 <input type="file" id="fileIn" class="hide" multiple></input>

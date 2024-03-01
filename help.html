@@ -17,14 +17,14 @@
 <h1><b>GroupEncrypt Help</b></h1>
 <h2>User Instructions:</h2>
 <h3>Setting Up Your Password:</h3>
-<p>When you first open the app, you'll be prompted to create a strong password. Follow the guidelines provided to ensure it is secure. As you type your password, the app will give you a score to help you gauge its strength. Once you've entered your password, take a moment to note the "Hashili" word that appears below it. This word confirms that you've typed your password correctly. You can toggle the visibility of your password using the eye icon within the password box. If you forget your password, the app won't let you proceed beyond this step.</p>
+<p>When you first open the app, you'll be prompted to create a strong password. Follow the guidelines provided to ensure it is secure. As you type your password, the app will give you a score to help you gauge its strength. For best strength, mix lowercase, capitals, numbers, and special characters; misspell words. <strong>If your Password is less than Medium, things will be slow</strong>. Once you've entered your password, take a moment to note the "Hashili" word that appears below it. This word confirms that you've typed your password correctly. You can toggle the visibility of your password using the eye icon within the password box. If you forget your password, the app won't let you proceed beyond this step.</p>
 
 <h3>Logging In:</h3>
 <p>Unlike other apps, you don't need to create a username. Your password alone will be used to identify you. The app generates a pair of private and public keys based on your password. When you first enter your password, you'll be denied access because the app doesn't recognize you yet. To gain access, you need to share your ID, which will be displayed, with your group administrator.</p>
 
 <h3>Using Encryption Modes:</h3>
 <p><b>Default Mode:</b> &nbsp;In this mode, you can encrypt or decrypt files individually without the need for a Folder Key. It defaults to encrypting so administrators can decrypt. The Administrator extras allow you to select other recipients.</p>
-<p><b>Folder Mode:</b> &nbsp;This mode is used for encrypting files in shared folders so that user access can be changed without re-encrypting every file. It requires loading an encrypted Folder Key file before encrypting or decrypting files.</p>
+<p><b>Folder Mode:</b> &nbsp;This mode is used for encrypting files in shared folders so that user access can be changed without re-encrypting every file. This mode is selected when you load a Folder Key file before encrypting or decrypting files.</p>
 
 <h3>How to Encrypt and Decrypt Files:</h3>
 <p>Drag and drop files onto the designated area in the app to encrypt or decrypt them.
@@ -35,7 +35,7 @@ Output files will be saved in your Downloads folder.</p>
 <p>You can choose to deploy the app either locally or on a web server. If deployed locally, you'll need to provide users with updated GroupKeys.js files manually. If deployed on a web server, users will receive updates automatically, but their public keys will be visible to anyone who knows the app's URL.</p>
 
 <h3>Enrolling New Members:</h3>
-<p>New members need to provide their ID to the administrator for enrollment. Once received, the administrator updates the GroupKeys.js file with the new member's name and ID. Administrator names should contain the string "(admin)" somewhere.</p>
+<p>New members need to provide their ID to the administrator for enrollment. Once received, the administrator updates the GroupKeys.js file with the new member's name and ID. Administrator names should be added to a list named "==Admin==" so encryption defaults to them.</p>
 
 <h3>Managing File Access:</h3>
 <p>Admins can update folder access by loading its _FolderKey.crypt file and selecting the appropriate group members.</p>

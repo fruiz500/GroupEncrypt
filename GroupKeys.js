@@ -1,12 +1,12 @@
 var GroupKeys = {
 
-    "GroupName": "Sample Group",       //got to keep it the same for Test 1, oops!
+    "GroupName": "Sample Group",       //don't forget to change this!
 
     "HeadTag": "[27,27,27,27,27,27,27]",
 
-    //the rest are user names and their public keys; make sure there are commas between entries; public keys within quotes
+    //the rest are user names and their public keys; make sure there are commas between entries
 
-    "Alice (admin)":
+    "Alice":                     
     "it0oh6L44k2fnb4793kekbkanet8kdkfu9y5541kpojb3mk5om",
 
     "Bob":
@@ -18,13 +18,16 @@ var GroupKeys = {
     "$Adam":                                               //former user; kept so that files encrypted by this user can still be decrypted
     "wv6ndfmn8ntifp6k4xbncs3vjf8rxi8g7f9czfsab78vuyyxsa",
 
-    "==Girls==":
-    "Alice (admin), Carol",
+    "=Girls=":
+    "Alice, Carol, Diana",
 
-    "==Lovers==":
-    "Alice (admin), Bob",
+    "=Lovers=":
+    "Alice, Bob",
 
-    "==AllGroups==":
-    "==Girls==, ==Lovers=="
+    "=AllGroups=":
+    "==Admin==, =Girls=, =Lovers=",
+
+    "==Admin==":					//will encrypt for these users if no selection
+    "Alice"
 
 }
