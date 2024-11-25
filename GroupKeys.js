@@ -7,16 +7,16 @@ var GroupKeys = {
     //the rest are user names and their public keys; make sure there are commas between entries
 
     "Alice":                     
-    "it0oh6L44k2fnb4793kekbkanet8kdkfu9y5541kpojb3mk5om",
+    "131xifuucpv5Leq3g01inzn2ztr8dj2cx5k6zxhbfb3wm4mwb8",
 
     "Bob":
-    "acnkhinpurLgcjgcuLk1gwtn3zLyy68ystissirxumtxm4ctw6",
+    "5exm18ey79v8viaLg6zq78eir8rn6n0opay4jwmfdzrmLoyjpo",
 
     "Carol":
-    "r9t28eq9xa0L35wx66pngko0zao7p3r8kr3ahtjnw74aar3fgu",
+    "dx80o7hcjnafyfo2vusppdew5j4cso1xcb430cqhg6qmju94jc",
 
     "$Adam":                                               //former user; kept so that files encrypted by this user can still be decrypted
-    "wv6ndfmn8ntifp6k4xbncs3vjf8rxi8g7f9czfsab78vuyyxsa",
+    "Lbs44c9kjanciqdvxq4Lqt23gjxve5vdopnzk8iq2xrvrvqLeg",
 
     "=Girls=":
     "Alice, Carol, Diana",

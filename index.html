@@ -23,6 +23,9 @@
 <!--Tweet NaCl crypto library by Dmitry Chestnykh, v1.0.3. https://github.com/dchest/tweetnacl-js-->
 <script src="lib-opensrc/nacl-fast.js"></script>
 
+<!--ed2curve-js conversion of curve coordinates 0.2.1 by Dmitry Chestnykh. https://github.com/dchest/ed2curve-js-->
+<script src="lib-opensrc/ed2curve.js"></script>
+
 <!--scrypt-async-js KDF by Dmitry Chestnykh, v2.0.1. https://github.com/dchest/scrypt-async-js-->
 <script src="lib-opensrc/scrypt-async.js"></script>
 
@@ -39,7 +42,7 @@
 <body>
 <h1 class="center">GroupEncrypt</h1>
 <p class="center">&#169; 2024 F. Ruiz</p>
-<p>This app encrypts/decrypts files for a group of users named <span id="groupNameBox"></span>. <span id="help">Click here for Help</span></p>
+<p>This app encrypts/decrypts files for a group of users named <span id="groupNameBox" contenteditable="true"></span>. <span id="help">Click here for Help</span></p>
 <p id="step1">1. Enter your secret Password in the box and press the Accept button. All processing is local; nothing is sent out. You will have to re-enter your Password after 5 minutes of inactivity.</p>
 <div id="pwdArea">
 <div id="pwdMsg" class="message">Password strength will be displayed here</div>
